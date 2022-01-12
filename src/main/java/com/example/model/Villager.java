@@ -1,16 +1,31 @@
 package com.example.model;
 
+/**
+ * This Villager class holds the information about a villager. Year of birth,
+ * death age and death year.
+ * 
+ * @author godeo
+ */
 public class Villager {
 
 	private int birthYear;
 	private int deathAge;
 	private int deathYear;
 
+	/**
+	 * @param deathAge
+	 * @param deathYear
+	 */
 	public Villager(int deathAge, int deathYear) {
 		this.deathAge = deathAge;
 		this.deathYear = deathYear;
 	}
 
+	/**
+	 * This method calculates and sets birthYear by checking edge cases.
+	 * 
+	 * @param startDeathYear
+	 */
 	public void setBirthYear(int startDeathYear) {
 		this.birthYear = this.deathYear - this.deathAge;
 		if (this.deathAge < 1 || this.deathYear < 1 || startDeathYear < 1 || this.deathYear < this.deathAge
@@ -19,6 +34,9 @@ public class Villager {
 		}
 	}
 
+	/**
+	 * @return birthYear
+	 */
 	public int getBirthYear() {
 		return birthYear;
 	}
