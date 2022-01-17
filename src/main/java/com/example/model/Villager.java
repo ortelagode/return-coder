@@ -41,4 +41,32 @@ public class Villager {
 		return birthYear;
 	}
 
+	/**
+	 * @return deathYear
+	 */
+	public int getDeathAge() {
+		return deathAge;
+	}
+
+	/**
+	 * @param deathAge
+	 */
+	public void setDeathAge(int deathAge) {
+		this.deathAge = deathAge;
+	}
+
+	/**
+	 * @return deathYear
+	 */
+	public int getDeathYear() {
+		return deathYear;
+	}
+
+	/**
+	 * @param deathYear
+	 */
+	public void setDeathYear(int deathYear) {
+		this.deathYear = deathYear;
+	}
+
 }

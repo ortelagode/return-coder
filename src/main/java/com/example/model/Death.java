@@ -45,7 +45,7 @@ public class Death {
 	private int deathsPerYear(int year) {
 		int deathCount = 0;
 		for (int i = 1; i <= year; i++) {
-			deathCount = deathCount + Util.nextValue(i);
+			deathCount = deathCount + Util.fib(i);
 		}
 		return deathCount;
 	}
