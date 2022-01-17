@@ -11,7 +11,7 @@ mvn clean
 mvn install
 
 # build skipping tests
-mvn install -Dmaven.test.skip=true -Djacoco.skip=true
+mvn install -Dmaven.test.skip=true
 
 # start development server locally
 mvn spring-boot:run
