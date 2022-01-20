@@ -22,7 +22,10 @@ public class Util {
 
 		int k = (n & 1) == 1 ? (n + 1) / 2 : n / 2;
 
-		return (n & 1) == 1 ? (fib(k) * fib(k) + fib(k - 1) * fib(k - 1)) : (2 * fib(k - 1) + fib(k)) * fib(k);
+		int fibK = fib(k);
+		int fibKMinus1 = fib(k - 1);
+
+		return (int) ((n & 1) == 1 ? (Math.pow(fibK, 2) + Math.pow(fibKMinus1, 2)) : (2 * fibKMinus1 + fibK) * fibK);
 
 	}
 
