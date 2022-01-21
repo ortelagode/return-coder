@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 import com.example.util.Util;
@@ -23,29 +25,29 @@ public class Death {
 	 * @return the average of all deaths that have happened in the years these
 	 *         villagers were born
 	 */
-	public double averageDeaths(List<Villager> villagers) {
-		int sumOfDeaths = 0;
+	public BigDecimal averageDeaths(List<Villager> villagers) {
+		BigInteger sumOfDeaths = BigInteger.valueOf(0);
 		if (villagers.size() == 0) {
-			return 0;
+			return BigDecimal.valueOf(0);
 		}
 		for (Villager villager : villagers) {
 			villager.setBirthYear(startDeathYear);
 			if (villager.getBirthYear() == -1) {
-				return -1;
+				return BigDecimal.valueOf(-1);
 			}
-			sumOfDeaths = sumOfDeaths + deathsPerYear(villager.getBirthYear());
+			sumOfDeaths = sumOfDeaths.add(deathsPerYear(villager.getBirthYear()));
 		}
-		return (double) sumOfDeaths / villagers.size();
+		return new BigDecimal(sumOfDeaths).divide(BigDecimal.valueOf(villagers.size()));
 	}
 
 	/**
 	 * @param year
 	 * @return number of deaths in a specific year
 	 */
-	private int deathsPerYear(int year) {
-		int deathCount = 0;
+	private BigInteger deathsPerYear(int year) {
+		BigInteger deathCount = BigInteger.valueOf(0);
 		for (int i = 1; i <= year; i++) {
-			deathCount = deathCount + Util.fib(i);
+			deathCount = deathCount.add(Util.fib(i));
 		}
 		return deathCount;
 	}

@@ -1,5 +1,7 @@
 package com.example.test;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
@@ -29,22 +31,22 @@ public class DeathTest {
 	@CsvSource({ "0, 12, 1", "10, -3, 1", "10, 12, -5", "12, 10, 1", "10, 12, 5" })
 	public void failingScenarioTest(int deathAge, int deathYear, int startDeathYear) {
 		Death death = new Death(startDeathYear);
-		double average = death.averageDeaths(Arrays.asList(new Villager(deathAge, deathYear)));
-		Assertions.assertEquals(-1.0, average);
+		BigDecimal average = death.averageDeaths(Arrays.asList(new Villager(deathAge, deathYear)));
+		Assertions.assertEquals(BigDecimal.valueOf(-1), average);
 	}
 
 	@Test
 	public void successScenarioYear1Test() {
 		Death death = new Death(1);
-		double average = death.averageDeaths(Arrays.asList(new Villager(10, 12), new Villager(13, 17)));
-		Assertions.assertEquals(4.5, average);
+		BigDecimal average = death.averageDeaths(Arrays.asList(new Villager(10, 12), new Villager(13, 17)));
+		Assertions.assertEquals(BigDecimal.valueOf(4.5), average);
 	}
 
 	@Test
 	public void successScenarioYear3Test() {
 		Death death = new Death(3);
-		double average = death.averageDeaths(Arrays.asList(new Villager(13, 19), new Villager(11, 15)));
-		Assertions.assertEquals(13.5, average);
+		BigDecimal average = death.averageDeaths(Arrays.asList(new Villager(13, 19), new Villager(11, 15)));
+		Assertions.assertEquals(BigDecimal.valueOf(13.5), average);
 	}
 
 	/*
@@ -87,9 +89,10 @@ public class DeathTest {
 	public void fibonacciOptimized() {
 		for (int i = 1; i <= 100; i++) {
 			long start = System.nanoTime();
-			Util.fib(i);
+			BigInteger n = Util.fib(i);
 			long end = System.nanoTime();
 			System.out.println("Execution time OPTIMIZED for n=" + i + " is: " + (end - start));
+			System.out.println("FIBB OPTIMIZED for n=" + i + " is: " + n);
 		}
 	}
 }

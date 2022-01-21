@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import java.math.BigDecimal;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,7 @@ import com.example.model.VillagersRequest;
 public class DeathController {
 
 	@PostMapping(value = "/deaths/{startDeathYear}")
-	public Double getDeaths(@PathVariable int startDeathYear, @RequestBody VillagersRequest villagersRequest) {
+	public BigDecimal getDeaths(@PathVariable int startDeathYear, @RequestBody VillagersRequest villagersRequest) {
 		Death death = new Death(startDeathYear);
 		return death.averageDeaths(villagersRequest.getVillagers());
 	}
