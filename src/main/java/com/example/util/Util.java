@@ -1,6 +1,11 @@
 package com.example.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Util {
+
+	private static Map<Integer, Integer> fibMap = new HashMap<>();
 
 	public static int nextValue(int n) {
 		if (n == 0) {
@@ -20,12 +25,20 @@ public class Util {
 			return 1;
 		}
 
+		if (fibMap.get(n) != null) {
+			return fibMap.get(n);
+		}
+
 		int k = (n & 1) == 1 ? (n + 1) / 2 : n / 2;
 
-		int fibK = fib(k);
-		int fibKMinus1 = fib(k - 1);
+		int fibK = fibMap.get(k) != null ? fibMap.get(k) : fib(k);
+		int fibKMinus1 = fibMap.get(k - 1) != null ? fibMap.get(k - 1) : fib(k - 1);
 
-		return (int) ((n & 1) == 1 ? (Math.pow(fibK, 2) + Math.pow(fibKMinus1, 2)) : (2 * fibKMinus1 + fibK) * fibK);
+		int fibN = (int) ((n & 1) == 1 ? (Math.pow(fibK, 2) + Math.pow(fibKMinus1, 2))
+				: (2 * fibKMinus1 + fibK) * fibK);
+
+		fibMap.put(n, fibN);
+		return fibN;
 
 	}
 
